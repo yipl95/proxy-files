@@ -1,28 +1,17 @@
-import {useState} from 'react';
-import logo from './assets/images/logo-universal.png';
-import './App.css';
-import {Greet} from "../wailsjs/go/main/App";
+import { Button } from "@/components/ui/button"
+import React from "react"
 
 function App() {
-    const [resultText, setResultText] = useState("Please enter your name below 👇");
-    const [name, setName] = useState('');
-    const updateName = (e: any) => setName(e.target.value);
-    const updateResultText = (result: string) => setResultText(result);
+  const [count, setCount] = React.useState(0)
 
-    function greet() {
-        Greet(name).then(updateResultText);
-    }
-
-    return (
-        <div id="App">
-            <img src={logo} id="logo" alt="logo"/>
-            <div id="result" className="result">{resultText}</div>
-            <div id="input" className="input-box">
-                <input id="name" className="input" onChange={updateName} autoComplete="off" name="input" type="text"/>
-                <button className="btn" onClick={greet}>Greet</button>
-            </div>
-        </div>
-    )
+  return (
+    <div className="min-h-screen bg-white grid place-items-center mx-auto py-8">
+      <div className="text-blue-900 text-2xl font-bold flex flex-col items-center space-y-4">
+        <h1>Vite + React + TS + Tailwind + shadcn/ui</h1>
+        <Button onClick={() => setCount(count + 1)}>Count up ({count})</Button>
+      </div>
+    </div>
+  )
 }
 
 export default App
